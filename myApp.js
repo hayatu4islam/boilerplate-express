@@ -29,7 +29,16 @@ app.get("/json", function(req, res){
 // app.get("/json", function(req, res) {
 //     res.json({"message": "Hello json"});
 // });
+function getThePresentTime() {
+    return new Date().toString();
+}
 
+app.get("/now", function(req, res, next){
+    req.time = getThePresentTime();
+    next();
+}, function(req, res){
+    res.json({ time: req.time})
+})
 
 
 
