@@ -8,11 +8,10 @@ app.use(function(req, res, next) {
     console.log(string);
     next();
 })
+app.use(bodyParser.urlencoded({ extended: false }));
+// We parse the application/json
+app.use(bodyParser.json())
 
-app.use(function(req, res, next){
-    bodyParser.urlencoded({extended: false});
-    next();
-})
 
 app.use("/public", express.static(__dirname + "/public"));
 // Meet the Node console
